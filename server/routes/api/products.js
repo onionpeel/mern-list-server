@@ -64,7 +64,7 @@ router.delete('/detail/:id', async (req, res) => {
 router.patch('/detail/:id', async (req, res) => {
   try {
     const body = req.body;
-    const updatedProduct = await Product.findOneAndUpdate({_id: req.params.id}, {$set: body}, {new: true});
+    const updatedProduct = await Product.findByIdAndUpdate({_id: req.params.id}, {$set: body}, {new: true});
     if (!updatedProduct) {
       return res.status(404).send();
     };

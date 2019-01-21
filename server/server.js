@@ -5,6 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 //import the router module
 const products = require('./routes/api/products');
+// const {mongoose} = require('./db/mongoose');
 
 // const path = require('path');
 
@@ -42,3 +43,5 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
+module.exports = app;

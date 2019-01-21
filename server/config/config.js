@@ -1,4 +1,10 @@
-let configObject = require('./config.json');
-let dbUri = configObject.MONGODB_URI;
+var env = process.env.NODE_ENV || 'development';
 
-process.env.MONGODB_URI = dbUri;
+if (env === 'development' || env === 'test') {
+  var config = require('./config.json');
+  var envConfig = config[env];
+
+  Object.keys(envConfig).forEach((key) => {
+    process.env[key] = envConfig[key];
+  });
+}
