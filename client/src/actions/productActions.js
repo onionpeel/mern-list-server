@@ -2,7 +2,7 @@ import {GET_PRODUCTS, GET_ONE_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODU
 import axios from 'axios';
 
 export const getProducts = () => dispatch => {
-  axios.get(`http://localhost:5000/api/products/list`)
+  axios.get(`/api/products/list`)
     .then(res => {
       dispatch({type: GET_PRODUCTS, products: res.data.data});
     });
