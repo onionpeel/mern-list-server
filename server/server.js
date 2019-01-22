@@ -5,26 +5,27 @@ const express = require('express');
 const bodyParser = require('body-parser');
 //import the router module
 const products = require('./routes/api/products');
+
+const allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+};
 // const {mongoose} = require('./db/mongoose');
 
 // const path = require('path');
 
 const app = express();
 app.use(bodyParser.json());
+//Set up the CORS before establish the routes
+app.use(allowCrossDomain);
 
 app.use('/api/products', products);
 
 
 
-// const allowCrossDomain = function(req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//
-//     next();
-// }
-//
-// app.use(allowCrossDomain);
+
 
 
 //Serve static assets if in production

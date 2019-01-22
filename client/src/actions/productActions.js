@@ -2,14 +2,14 @@ import {GET_PRODUCTS, GET_ONE_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODU
 import axios from 'axios';
 
 export const getProducts = () => dispatch => {
-  axios.get(`http://localhost:5000/list`)
+  axios.get(`http://localhost:5000/api/products/list`)
     .then(res => {
-      dispatch({type: GET_PRODUCTS, inventory: res.data.data});
+      dispatch({type: GET_PRODUCTS, products: res.data.data});
     });
 };
 
 export const getOneProduct = (_id) => dispatch => {
-  axios.get(`http://localhost:5000/detail/${_id}`)
+  axios.get(`http://localhost:5000/api/products/detail/${_id}`)
     .then(res => {
       dispatch({
         type: GET_ONE_PRODUCT,
@@ -22,7 +22,7 @@ export const getOneProduct = (_id) => dispatch => {
 };
 
 export const addProduct = product => dispatch => {
-  axios.post(`http://localhost:5000/detail`, product)
+  axios.post(`http://localhost:5000/api/products/detail`, product)
     .then(res => {
       dispatch({
         type: ADD_PRODUCT,
@@ -32,7 +32,7 @@ export const addProduct = product => dispatch => {
 };
 
 export const deleteProduct = _id => dispatch => {
-  axios.delete(`http://localhost:5000/detail/${_id}`)
+  axios.delete(`http://localhost:5000/api/products/detail/${_id}`)
     .then(res => {
       dispatch({
         type: DELETE_PRODUCT,
@@ -44,7 +44,7 @@ export const deleteProduct = _id => dispatch => {
 export const updateProduct = (updatedProduct, id) => dispatch => {
   axios({
     method: 'patch',
-    url: `http://localhost:5000/detail/${id}`,
+    url: `http://localhost:5000/api/products/detail/${id}`,
     data: updatedProduct
   })
   .then(res => {

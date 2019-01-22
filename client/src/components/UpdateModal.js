@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import {updateProduct} from './actions/productActions';
+import {updateProduct} from './../actions/productActions';
 import {connect} from 'react-redux';
 
 class UpdateModal extends Component {

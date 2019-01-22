@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
-import {addProduct} from './actions/productActions';
+import {addProduct} from './../actions/productActions';
 import {connect} from 'react-redux';
 
 class ProductModal extends React.Component {
@@ -75,7 +75,7 @@ class ProductModal extends React.Component {
 
 const mapPropsToComponent = state => {
   return {
-    inventory: state.inventory
+    product: state.product
   };
 };
 

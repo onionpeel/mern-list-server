@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getProducts, deleteProduct} from './actions/productActions';
+import {getProducts, deleteProduct} from './../actions/productActions';
 import ProductModal from './ProductModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Button, ListGroup, ListGroupItem} from 'reactstrap';
@@ -19,25 +19,25 @@ class IndexComponent extends Component {
   }
 
   render() {
-    const inventory = this.props.inventory;
+    const {products} = this.props.product;
     return(
       <Container>
         <div>
           <ProductModal />
           <div>
             <ListGroup>
-              {inventory.map((product, index) => (
+              {products.map((item, index) => (
                  <div key={index}>
                     <ListGroupItem>
                       <Button
                         className="remove-btn"
                         size="sm"
                         color="info"
-                        onClick={this.onDeleteClick.bind(this, product._id)}
+                        onClick={this.onDeleteClick.bind(this, item._id)}
                         >
                         &times;
                       </Button>
-                      <Link to={`/detail/${product._id}`}>{product.name}</Link>
+                      <Link to={`/detail/${item._id}`}>{item.name}</Link>
                     </ListGroupItem>
                   </div>
               ))}
@@ -51,7 +51,7 @@ class IndexComponent extends Component {
 
 const mapPropsToComponent = state => {
   return {
-    inventory: state.inventory
+    product: state.product
   }
 };
 

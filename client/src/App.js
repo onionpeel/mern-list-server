@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {HashRouter as Router, Route} from 'react-router-dom';
 import IndexComponent from './components/IndexComponent';
-import DetailComponent from './/componentDetailComponent';
+import DetailComponent from './components/DetailComponent';
 
 class App extends Component {
 

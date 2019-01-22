@@ -1,7 +1,7 @@
 import {GET_PRODUCTS, GET_ONE_PRODUCT, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT} from './../actions/types';
 
 const initialState = {
-  inventory: [],
+  products: [],
   name: '',
   description: '',
   quantity: '',
@@ -11,7 +11,7 @@ const initialState = {
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_PRODUCTS:
-      return Object.assign({}, state, {inventory: action.inventory});
+      return Object.assign({}, state, {products: action.products});
     case GET_ONE_PRODUCT:
       return Object.assign({}, state, {
         name: action.name,
@@ -22,17 +22,17 @@ const productReducer = (state = initialState, action) => {
     case ADD_PRODUCT:
       return {
         ...state,
-        inventory: [action.payload, ...state.inventory]
+        products: [action.payload, ...state.products]
       };
     case DELETE_PRODUCT:
       return {
         ...state,
-        inventory: state.inventory.filter(product => product._id !== action.payload)
+        products: state.products.filter(product => product._id !== action.payload)
       };
     case UPDATE_PRODUCT:
       return {
         ...state,
-        inventory: [action.payload, ...state.inventory],
+        products: [action.payload, ...state.products],
         name: action.payload.name,
         description: action.payload.description,
         quantity: action.payload.quantity

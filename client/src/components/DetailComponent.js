@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getOneProduct} from './actions/productActions';
+import {getOneProduct} from './../actions/productActions';
 import {Container} from 'reactstrap';
 import UpdateModal from './UpdateModal';
 import {Link} from 'react-router-dom';
@@ -37,10 +37,10 @@ class DetailComponent extends Component {
 
 const mapPropsToComponent = state => {
   return {
-    name: state.name,
-    description: state.description,
-    quantity: state.quantity,
-    _id: state._id
+    name: state.product.name,
+    description: state.product.description,
+    quantity: state.product.quantity,
+    _id: state.product._id
   }
 };
 
