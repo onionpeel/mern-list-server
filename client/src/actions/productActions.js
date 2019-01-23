@@ -9,7 +9,7 @@ export const getProducts = () => dispatch => {
 };
 
 export const getOneProduct = (_id) => dispatch => {
-  axios.get(`http://localhost:5000/api/products/detail/${_id}`)
+  axios.get(`/api/products/detail/${_id}`)
     .then(res => {
       dispatch({
         type: GET_ONE_PRODUCT,
@@ -22,7 +22,7 @@ export const getOneProduct = (_id) => dispatch => {
 };
 
 export const addProduct = product => dispatch => {
-  axios.post(`http://localhost:5000/api/products/detail`, product)
+  axios.post(`/api/products/detail`, product)
     .then(res => {
       dispatch({
         type: ADD_PRODUCT,
@@ -32,7 +32,7 @@ export const addProduct = product => dispatch => {
 };
 
 export const deleteProduct = _id => dispatch => {
-  axios.delete(`http://localhost:5000/api/products/detail/${_id}`)
+  axios.delete(`/api/products/detail/${_id}`)
     .then(res => {
       dispatch({
         type: DELETE_PRODUCT,
@@ -44,7 +44,7 @@ export const deleteProduct = _id => dispatch => {
 export const updateProduct = (updatedProduct, id) => dispatch => {
   axios({
     method: 'patch',
-    url: `http://localhost:5000/api/products/detail/${id}`,
+    url: `/api/products/detail/${id}`,
     data: updatedProduct
   })
   .then(res => {
